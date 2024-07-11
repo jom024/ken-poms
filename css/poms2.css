@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #fafbfe;
+}
+
+#sidebar {
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #A52A2A;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #d15050;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+#logo {
+    width: 30px;
+    height: auto;
+}
+
+
+
+/* ORDER styles */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1rem;
+    color: #333; /* Dark text color for readability */
+  }
+  
+  .table thead th {
+    background-color: #EBD9D9; /* Light background for header */
+    color: #A52A2A; /* Slightly darker text color for contrast */
+    font-weight: bold;
+    border-bottom: 2px solid #C18F8F; /* Subtle border for the header */
+    padding: 8px 12px; /* Consistent padding */
+  }
+  
+  .table tbody tr {
+    background-color: #FFF; /* White background for rows */
+    border-bottom: 1px solid #C18F8F; /* Border between rows */
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #F5E5E5; /* Light red background for even rows */
+  }
+  
+  .table td, .table th {
+    vertical-align: middle;
+    padding: 10px 15px; /* Consistent padding for cells */
+  }
+  
+  .table tbody tr:hover {
+    background-color: #EBD9D9; /* Subtle highlight on hover */
+  }
+  
+  /* Buttons styles */
+  .btn-primary {
+    background-color: #A52A2A; /* Primary button with navbar color */
+    border-color: #A52A2A; /* Matching border color */
+    padding: 8px 12px; /* Slightly reduced padding for a sleeker look */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .btn-primary:hover {
+    background-color: #802020; /* Darker on hover */
+    border-color: #701818; /* Matching border color on hover */
+  }
+  
+  .btn-secondary {
+    background-color: #C18F8F; /* Greyish red for secondary button */
+    border-color: #C18F8F; /* Matching border color */
+    padding: 8px 12px; /* Consistent padding */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .btn-secondary:hover {
+    background-color: #A37474; /* Darker greyish red on hover */
+    border-color: #925C5C; /* Matching border color on hover */
+  }
+  
+  /* Alert styles */
+  .alert {
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Consistent padding */
+  }
+  
+  .alert-warning {
+    background-color: #F5E5E5; /* Light red background for warning */
+    color: #A52A2A; /* Dark text color for readability */
+    border-color: #C18F8F; /* Matching border color */
+  }
+  
+  .alert-dismissible .btn-close {
+    background-color: #C18F8F; /* Background color for close button */
+  }
+  
+  .alert-dismissible .btn-close:hover {
+    background-color: #A37474; /* Slightly darker background on hover */
+  }
+  
+  /* Card styles */
+  .card {
+    border: 1px solid #C18F8F; /* Subtle border for the card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for a modern look */
+  }
+  
+  .card-header {
+    background-color: #A52A2A; /* Matching header background color */
+    color: #fff; /* White text color for the header */
+    border-bottom: 1px solid #701818; /* Border to separate header */
+    padding: 15px; /* Consistent padding */
+  }
+  
+  .card-header .btn-group .btn {
+    border-radius: 5px; /* Rounded corners for buttons */
+  }
+
+  .card-body {
+    background-color: #ffb4b4;
+  }
+  
+  /* Modal styles */
+  .modal-content {
+    border-radius: 10px; /* Rounded corners for modal */
+  }
+  
+  /* Table actions buttons */
+  .btn-info {
+    background-color: #A52A2A; /* Info button color */
+    border-color: #A52A2A; /* Matching border color */
+    padding: 5px 10px; /* Slightly reduced padding */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .btn-info:hover {
+    background-color: #802020; /* Darker on hover */
+    border-color: #701818; /* Matching border color on hover */
+  }
+  
+  .btn-success {
+    background-color: #28a745; /* Green background for success button */
+    border-color: #28a745; /* Matching border color */
+    padding: 5px 10px; /* Consistent padding */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .btn-success:hover {
+    background-color: #1e7e34; /* Darker green on hover */
+    border-color: #1c7430; /* Matching border color on hover */
+  }
+  
+  .btn-danger {
+    background-color: #dc3545; /* Red background for delete button */
+    border-color: #dc3545; /* Matching border color */
+    padding: 5px 10px; /* Consistent padding */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333; /* Darker red on hover */
+    border-color: #bd2130; /* Matching border color on hover */
+  }
+  

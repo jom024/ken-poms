@@ -1,0 +1,155 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: whitesmoke;
+    line-height: 1.6;
+}
+
+main {
+    padding: 1rem;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    /* background: linear-gradient(90deg, rgba(255,165,0,1) 37%, rgba(0,128,0,1) 100%); */
+    margin: 20px;
+    background-color: white;
+    color: #333333; 
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.actions .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actions .btn.create-order {
+    background-color: green; 
+    color: whitesmoke; 
+    flex: 1; 
+    margin-right: 10px; 
+}
+
+.actions .btn.notifications {
+    background-color: green;
+    flex: 1; 
+    color: #ffffff;
+}
+
+.order-status {
+    background-color: white;
+    color: #333333;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+.update{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.recent-orders, .upcoming-tasks{
+    background-color: white;
+    color: #333333; 
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.recent-orders ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recent-orders ul li {
+    margin-bottom: 10px;
+}
+
+.recent-orders{
+    margin-right: 10px;
+}
+
+.upcoming-tasks ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.upcoming-tasks ul li {
+    margin-bottom: 10px;
+}
+
+.analytics {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.analytics > div {
+    flex: 1;
+    background-color: white; 
+    color: #333333; 
+    padding: 20px;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+.notifications-popup {
+    
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(225, 128, 24, 0.8);
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    max-width: 80%;
+}
+
+.popup-content {
+    position: relative;
+}
+
+.popup-content ul li{
+    list-style-type: none;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
