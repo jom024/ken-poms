@@ -1,0 +1,54 @@
+.picture,
+.password,
+.security,
+.socmed,
+.data,
+.help {
+    margin: 1em 0;
+    text-align: left;
+}
+
+.picture h3,
+.password h3,
+.security h3,
+.socmed h3,
+.data h3,
+.help h3{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5em;
+    color: #eb991f;
+}
+
+.picture p,
+.password p,
+.security p,
+.socmed p,
+.data p,
+.help p{
+    margin: 0.5em 0;
+    color: #666;
+}
+
+.picture button,
+.password button,
+.security button,
+.socmed button,
+.data button,
+.help button {
+    width: 40%;
+    padding: 0.84em;
+    margin: 0.5em 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+.btn-primary {
+    background-color: #eb991f;
+    color: white;
+    
+}
+
+.btn-primary:hover {
+    background-color: #F5B14D;
+}

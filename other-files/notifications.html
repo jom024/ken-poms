@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="notifications.css">
+    <title>Notifications</title>
+  
+</head>
+<body>
+    <div class="notification-container">
+        <h2 class="text-center">My Notifications</h2>
+        <p class="dismiss text-right"><a id="dismiss-all" href="#">Dismiss All</a></p>
+        <h5 class="notification-header">Today</h5>
+        <div class="card notification-card notification-invitation">
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td><div class="card-title">Customer of Order Number '<b>#0001</b>' has received their order.</div></td>
+                        <td>
+                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <h5 class="notification-header">Earlier Today</h5>
+        <div class="card notification-card notification-warning">
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td><div class="card-title">Order '<b>#0002</b>' has not yet been shipped.</div></td>
+                        <td>
+                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="card notification-card notification-danger">
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td><div class="card-title">Downpayment for order '<b>#0003</b>' has not yet been paid.</div></td>
+                        <td>
+                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="card notification-card notification-reminder">
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td><div class="card-title">There are <b>10</b> upcoming final payment(s) this week.</div></td>
+                        <td>
+                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <h5 class="notification-header">Earlier This Week</h5>
+        <div class="card notification-card notification-invitation">
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td><div class="card-title">Customer of Order Number '<b>#0004</b>' has updated customization details.</div></td>
+                        <td>
+                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        const dismissAll = document.getElementById('dismiss-all');
+        const dismissBtns = Array.from(document.querySelectorAll('.dismiss-notification'));
+        const notificationCards = document.querySelectorAll('.notification-card');
+        const notificationHeaders = document.querySelectorAll('.notification-header');
+
+        dismissBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = e.target.closest('.notification-card');
+                parent.classList.add('display-none');
+            });
+        });
+
+        dismissAll.addEventListener('click', function(e) {
+            e.preventDefault();
+            notificationCards.forEach(card => {
+                card.classList.add('display-none');
+            });
+            notificationHeaders.forEach(header => {
+                header.classList.add('display-none');
+            });
+            const row = document.querySelector('.notification-container');
+            const message = document.createElement('h4');
+            message.classList.add('text-center');
+            message.innerHTML = 'All caught up!';
+            row.appendChild(message);
+        });
+    </script>
+</body>
+</html>
