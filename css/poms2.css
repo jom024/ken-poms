@@ -149,6 +149,14 @@ a.sidebar-link:hover {
 
 
 /* ORDER styles */
+
+.client_id {
+  width: 4.5em;
+}
+
+.payment_status {
+  width: 14.0em;
+}
 .table {
     border-collapse: separate;
     border-spacing: 0;

@@ -33,14 +33,43 @@ if (isset($_POST['click-view-btn'])) {
 
     if (mysqli_num_rows($fetch_query_run) > 0) {
         while ($row =  mysqli_fetch_array($fetch_query_run)) {
-            echo '<h6 class="text-center">Order ID: &nbsp&nbsp&nbsp'.$row['order_id'].'</h6>
-            <h6 class="text-center">Client ID: &nbsp&nbsp&nbsp'.$row['client_id'].'</h6>
-            <h6 class="text-center">Order Status: &nbsp&nbsp&nbsp'.$row['order_status'].'</h6>
-            <h6 class="text-center">Payment Status: &nbsp&nbsp&nbsp'.$row['payment_status'].'</h6>
-            <h6 class="text-center">Total Price: &nbsp&nbsp&nbsp'.$row['total_price'].'</h6>
-            <h6 class="text-center">Date of Order: &nbsp&nbsp&nbsp'.$row['order_date'].'</h6>
-            <h6 class="text-center">Fulfillment Date: &nbsp&nbsp&nbsp'.$row['fulfillment_date'].'</h6>
-            ';
+            echo '
+<div class="card">
+    <div class="card-body text-start">
+        <h5 class="card-title text-center mb-4">Order Details</h5>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <h6 style="font-size: 14px; font-weight:bold;">Order ID: <span class="fw-normal">'.$row['order_id'].'</span></h6>
+            </div>
+            <div class="col-md-6">
+                <h6 style="font-size: 14px; font-weight:bold;">Client ID: <span class="fw-normal">'.$row['client_id'].'</span></h6>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <h6 style="font-size: 14px; font-weight:bold;">Order Status: <span class="fw-normal">'.$row['order_status'].'</span></h6>
+            </div>
+            <div class="col-md-6">
+                <h6 style="font-size: 14px; font-weight:bold;">Payment Status: <span class="fw-normal">'.$row['payment_status'].'</span></h6>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <h6 style="font-size: 14px; font-weight:bold;">Total Price: <span class="fw-normal">'.$row['total_price'].'</span></h6>
+            </div>
+            <div class="col-md-6">
+                <h6 style="font-size: 14px; font-weight:bold;">Date of Order: <span class="fw-normal">'.$row['order_date'].'</span></h6>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <h6 style="font-size: 14px; font-weight:bold;">Fulfillment Date: <span class="fw-normal">'.$row['fulfillment_date'].'</span></h6>
+            </div>
+        </div>
+    </div>
+</div>
+';
+
         }
     } else {
         echo '<h4>No record found.</h4>';
@@ -83,10 +112,10 @@ if (isset($_POST['update']))
 
     if($update_query_run){
         $_SESSION['status'] = "Data updated successfully";
-        header("Location: ../public/index.php?p=orders");
+        header("Location: index.php?p=orders");
     } else {
         $_SESSION['status'] = "Update failed";
-        header("Location: ../public/index.php?p=orders");
+        header("Location: index.php?p=orders");
     }
 }
 

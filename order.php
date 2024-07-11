@@ -1,4 +1,4 @@
-<?php 
+<?php
 // session_start();
 require "code.php";
 ?>
@@ -11,69 +11,56 @@ require "code.php";
         <h1 class="modal-title fs-5" id="addOrderLabel">Add Order Details</h1>
       </div>
       <form action="code.php" method="POST">
-        <div class="modal-body">
-          <div class="row g-3 align-items-center">
-            <div class="col-auto">
-              <label for="client-id" class="col-form-label">Client ID</label>
+    <div class="modal-body">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="client-id" class="col-form-label">Client ID</label>
+                <input type="number" id="client-id" class="form-control" min="1" value="1" name="client_id">
             </div>
-            <div class="col-auto">
-              <input type="number" id="client-id" class="form-control client-id" min="1" value="1" name="client_id">
+            <div class="col-md-6">
+                <label for="order-status" class="col-form-label">Order Status</label>
+                <select name="order_status" id="order-status" class="form-control">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="On Delivery">On Delivery</option>
+                    <option value="Ready For Pick-up">Ready For Pick-up</option>
+                    <option value="Complete">Complete</option>
+                </select>
             </div>
-            <div class="col-auto">
-              <label for="order-status" class="col-form-label">Order Status</label>
-            </div>
-            <div class="col-auto">
-              <select name="order_status" id="order-status" class="form-control">
-                <option value="" selected disabled hidden>Choose here</option>
-                <option value="Pending">Pending</option>
-                <option value="Ongoing">Ongoing</option>
-                <option value="On Delivery">On Delivery</option>
-                <option value="Ready For Pick-up">Ready For Pick-up</option>
-                <option value="Complete">Complete</option>
-              </select>
-            </div>
-          </div>
-          <div class="row g-3 align-items-center mt-1 ms-5">
-            <div class="col-auto">
-              <label for="payment-status" class="col-form-label">Payment Status</label>
-            </div>
-            <div class="col-auto">
-              <select name="payment_status" id="payment-status" class="form-control">
-                <option value="" selected disabled hidden>Choose here</option>
-                <option value="Downpayment">Downpayment</option>
-                <option value="Paid">Paid</option>
-                <option value="Unpaid">Unpaid</option>
-              </select>
-            </div>
-          </div>
-          <div class="row g-3 align-items-center mt-1 ms-5">
-            <div class="col-auto">
-              <label for="price" class="col-form-label">Total Price</label>
-            </div>
-            <div class="col-auto">
-              <input type="number" min="1" class="form-control" id="price" step="any" value="1.00" name="total_price">
-            </div>
-          </div>
         </div>
-        <div class="row g-3 align-items-center ms-5 mb-3">
-          <div class="col-auto ms-4">
-            <label for="order-date" class="col-form-label">Date Ordered</label>
-          </div>
-          <div class="col-auto">
-            <input type="date" name="order_date" id="order-date" class="form-control">
-          </div>
-          <div class="col-auto ms-3">
-            <label for="fulfillment-date" class="col-form-label">Fulfillment Date</label>
-          </div>
-          <div class="col-auto">
-            <input type="date" name="fulfillment_date" id="fulfillment-date" class="form-control">
-          </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="payment-status" class="col-form-label">Payment Status</label>
+                <select name="payment_status" id="payment-status" class="form-control">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="Downpayment">Downpayment</option>
+                    <option value="Paid">Paid</option>
+                    <option value="Unpaid">Unpaid</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="price" class="col-form-label">Total Price</label>
+                <input type="number" min="1" class="form-control" id="price" step="any" value="1.00" name="total_price">
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" name="save" class="btn btn-primary">Save</button>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="order-date" class="col-form-label">Date Ordered</label>
+                <input type="date" name="order_date" id="order-date" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="fulfillment-date" class="col-form-label">Fulfillment Date</label>
+                <input type="date" name="fulfillment_date" id="fulfillment-date" class="form-control">
+            </div>
         </div>
-      </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="save" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
     </div>
   </div>
 </div>
@@ -92,7 +79,7 @@ require "code.php";
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -107,21 +94,20 @@ require "code.php";
       </div>
       <form action="code.php" method="POST">
         <div class="modal-body">
-          <div class="row g-3 align-items-center">
-            <div class="col-auto">
-              <input type="hidden" id="order_id" class="form-control" style="width:4.5em;" min="1" value="1" name="order_id">
+          <div class="row mb-3">
+            <input type="hidden" id="order_id" name="order_id" value="1">
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-2">
+              <label for="client_id" class="col-form-label">Client ID</label>
             </div>
-            <div class="col-auto">
-              <label for="client_id" class="col-form-label ms-5">Client ID</label>
+            <div class="col-md-4">
+              <input type="number" id="client_id" class="form-control" min="1" value="1" name="client_id">
             </div>
-            <div class="col-auto">
-              <input type="number" id="client_id" class="form-control" style="width:4.5em;" min="1" value="1" name="client_id">
-            </div>
-            <div></div>
-            <div class="col-auto ms-5">
+            <div class="col-md-2">
               <label for="order_status" class="col-form-label">Order Status</label>
             </div>
-            <div class="col-auto">
+            <div class="col-md-4">
               <select name="order_status" id="order_status" class="form-control">
                 <option value="" selected disabled hidden>Choose here</option>
                 <option value="Pending">Pending</option>
@@ -132,11 +118,11 @@ require "code.php";
               </select>
             </div>
           </div>
-          <div class="row g-3 align-items-center mt-1 ms-5">
-            <div class="col-auto">
+          <div class="row mb-3">
+            <div class="col-md-2">
               <label for="payment_status" class="col-form-label">Payment Status</label>
             </div>
-            <div class="col-auto">
+            <div class="col-md-4">
               <select name="payment_status" id="payment_status" class="form-control">
                 <option value="" selected disabled hidden>Choose here</option>
                 <option value="Downpayment">Downpayment</option>
@@ -144,32 +130,30 @@ require "code.php";
                 <option value="Unpaid">Unpaid</option>
               </select>
             </div>
-          </div>
-          <div class="row g-3 align-items-center mt-1 ms-5">
-            <div class="col-auto">
+            <div class="col-md-2">
               <label for="priceID" class="col-form-label">Total Price</label>
             </div>
-            <div class="col-auto">
+            <div class="col-md-4">
               <input type="number" min="1" class="form-control" id="priceID" step="any" name="total_price">
             </div>
           </div>
-        </div>
-        <div class="row g-3 align-items-center ms-5 mb-3">
-          <div class="col-auto ms-4">
-            <label for="order_date" class="col-form-label">Date Ordered</label>
-          </div>
-          <div class="col-auto">
-            <input type="date" name="order_date" id="order_date" class="form-control">
-          </div>
-          <div class="col-auto ms-3">
-            <label for="fulfillment_date" class="col-form-label">Fulfillment Date</label>
-          </div>
-          <div class="col-auto">
-            <input type="date" name="fulfillment_date" id="fulfillment_date" class="form-control">
+          <div class="row mb-3">
+            <div class="col-md-2">
+              <label for="order_date" class="col-form-label">Date Ordered</label>
+            </div>
+            <div class="col-md-4">
+              <input type="date" name="order_date" id="order_date" class="form-control">
+            </div>
+            <div class="col-md-2">
+              <label for="fulfillment_date" class="col-form-label">Fulfillment Date</label>
+            </div>
+            <div class="col-md-4">
+              <input type="date" name="fulfillment_date" id="fulfillment_date" class="form-control">
+            </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
           <button type="submit" name="update" class="btn btn-success">Update</button>
         </div>
       </form>
@@ -185,7 +169,7 @@ require "code.php";
         echo $_SESSION['status'];
       ?> <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Nice!</strong> <?php $_SESSION['status'] ?>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <button type="button" class="btn-danger btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       <?php
         unset($_SESSION['status']);
@@ -199,7 +183,7 @@ require "code.php";
             <button type="button" class="btn btn-primary ordercss" data-bs-toggle="modal" data-bs-target="#addOrder">
               <i class="lni lni-plus"></i> ADD</button>
             <button type="button" class="btn btn-secondary ordercss" data-bs-toggle="modal" data-bs-target="#">
-              <i class="lni lni-funnel"></i>FILTERS</button>  
+              <i class="lni lni-funnel"></i>FILTERS</button>
 
 
 
@@ -238,12 +222,12 @@ require "code.php";
                     <td> <?php echo $row['order_date']; ?> </td>
                     <td> <?php echo $row['fulfillment_date']; ?> </td>
                     <td>
-                    <button type="button" class="btn btn-info btn-sm text-white view-order ordercss" data-bs-toggle="modal" data-bs-target="#viewOrder">
-                    <i class="lni lni-eye"></i> VIEW</button>
-                    <button type="button" class="btn btn-success btn-sm edit-order ordercss" data-bs-toggle="modal" data-bs-target="#editOrder">
-                    <i class="lni lni-pencil"></i> EDIT</button>
-                    <button type="button" class="btn btn-danger btn-sm delete_btn ordercss">
-                    <i class="lni lni-trash-can"></i> DELETE</button>
+                      <button type="button" class="btn btn-info btn-sm text-white view-order ordercss" data-bs-toggle="modal" data-bs-target="#viewOrder">
+                        <i class="lni lni-eye"></i> VIEW</button>
+                      <button type="button" class="btn btn-success btn-sm edit-order ordercss" data-bs-toggle="modal" data-bs-target="#editOrder">
+                        <i class="lni lni-pencil"></i> EDIT</button>
+                      <button type="button" class="btn btn-danger btn-sm delete_btn ordercss">
+                        <i class="lni lni-trash-can"></i> DELETE</button>
                     </td>
                   </tr>
                 <?php

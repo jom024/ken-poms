@@ -22,12 +22,49 @@
 
     <main>
         <!-- Summary Metrics -->
-        <div class="summary">
-            <div class="summary-item">Total Orders: 120</div>
-            <div class="summary-item">Pending Orders: 15</div>
-            <div class="summary-item">Completed Orders: 95</div>
-            <div class="summary-item">Cancelled Orders: 10</div>
+        <div class="row">
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-header">
+                Total Orders
+            </div>
+            <div class="card-body" style="background: none;">
+                <h5 class="card-title">120</h5>
+            </div>
         </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-header">
+                Pending Orders
+            </div>
+            <div class="card-body" style="background: none;">
+                <h5 class="card-title">15</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-header">
+                Completed Orders
+            </div>
+            <div class="card-body" style="background: none;">
+                <h5 class="card-title">95</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-center">
+            <div class="card-header">
+                Cancelled Orders
+            </div>
+            <div class="card-body" style="background: none;">
+                <h5 class="card-title">10</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
 
         <!-- Recent Orders -->
         <div class="order-status">
