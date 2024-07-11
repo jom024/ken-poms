@@ -1,110 +1,89 @@
 <?php
 
-?> 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Employee Dashboard</title>
-<link rel="stylesheet" href="css/dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Order Management System Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+    <!-- Existing Navbar -->
 
-<h1>Dashboard</h1>
-<main>
-    <h2> Summary </h2>
-    <section class="summary">
-        <div class="summary-item">
-            <h2>Total Orders</h2>
-            <p>1000</p>
-        </div>
-        <div class="summary-item">
-            <h2>Pending Orders</h2>
-            <p>1000</p>
-        </div>
-        <div class="summary-item">
-            <h2>Completed Orders</h2>
-            <p>1000</p>
-        </div>
-        <div class="summary-item">
-            <h2>Revenue</h2>
-            <p>&#x20B1; 50,000</p>
-        </div>
-    </section>
+    <!-- Dashboard Navbar -->
+    <div class="sticky-navbar">
+        <h1 class="text-start" style="color: black;">Dashboard</h1>
+    </div>
 
-    <section class="actions">
-        <button class="btn create-order">Create New Order</button>
-        <button class="btn notifications" onclick="openNotifications()">Notifications</button>
-    </section>
+    <main>
+        <!-- Summary Metrics -->
+        <div class="summary">
+            <div class="summary-item">Total Orders: 120</div>
+            <div class="summary-item">Pending Orders: 15</div>
+            <div class="summary-item">Completed Orders: 95</div>
+            <div class="summary-item">Cancelled Orders: 10</div>
+        </div>
 
-    <section class="order-status">
-        <h2>Order Status Overview</h2>
-        <!-- Placeholder for charts/graphs -->
-    </section>
-
-    <section class="update">
-        <section class="recent-orders">
+        <!-- Recent Orders -->
+        <div class="order-status">
             <h2>Recent Orders</h2>
             <ul>
-                <li><a href="#">Order #1234 - John Doe - 2024-06-30 - Pending</a></li>
-                <li><a href="#">Order #1233 - Jane Doe - 2024-06-29 - Completed</a></li>
-                <li><a href="#">Order #1232 - Mike Wazowski - 2024-06-28 - Pending</a></li>
+                <li>Order ID: 101, Customer: John Doe, Date: 2023-07-01, Status: Pending</li>
+                <!-- More orders -->
             </ul>
-        </section>
+        </div>
 
-        <section class="upcoming-tasks">
-            <h2>Upcoming Tasks</h2>
+        <!-- Order Status Overview -->
+        <div class="analytics">
+            <div>
+                <h2>Order Status Overview</h2>
+                <!-- Pie chart or bar graph -->
+            </div>
+        </div>
+
+        <!-- Notifications/Alerts -->
+        <div class="notifications-popup">
+            <h2>Alerts</h2>
             <ul>
-                <li><a href="#">Order #1234 - John Doe - 2024-06-30 - Pending</a></li>
-                <li><a href="#">Order #1232 - Mike Wazowski - 2024-06-28 - Pending</a></li>
+                <li>Order ID: 102 is overdue!</li>
+                <!-- More alerts -->
             </ul>
-        </section>
-    </section>
-    
-
-    <section class="analytics">
-        <div>
-            <h2>Sales</h2>
-            <!-- Placeholder for graphs/charts -->
+            <span class="close">&times;</span>
         </div>
-        <div>
-            <h2>Top Customers</h2>
-            <!-- Placeholder for list of top customers -->
+
+        <!-- Upcoming Tasks/Reminders -->
+        <div class="update">
+            <div class="recent-orders">
+                <h2>Upcoming Tasks</h2>
+                <ul>
+                    <li>Deliver order ID: 103</li>
+                    <!-- More tasks -->
+                </ul>
+            </div>
         </div>
-    </section>
 
-    <section class="notifications-popup" id="notificationsPopup">
-        <div class="popup-content">
-            <span class="close" onclick="closeNotifications()">&times;</span>
-            <h3>Notifications</h3>
-            <ul>
-                <li>New order received from Jane Doe</li>
-                <li>Order #1234 status changed to Pending</li>
-                <li>Approve proof for Order #1234 due today</li>
-            </ul>
+        <!-- Performance Analytics -->
+        <div class="analytics">
+            <div>
+                <h2>Performance Analytics</h2>
+                <!-- Graphs or charts -->
+            </div>
         </div>
-    </section>
-</main>
 
-<footer>
-    <p>&copy; 2024 Ken PrintShoppe. All rights reserved.</p>
-</footer>
+        <!-- Actions and Shortcuts -->
+        <div class="actions">
+            <button class="btn create-order">Create New Order</button>
+            <button class="btn notifications">Manage Inventory</button>
+        </div>
 
-<script>
-function openNotifications() {
-    document.getElementById("notificationsPopup").style.display = "block";
-}
-
-function closeNotifications() {
-    document.getElementById("notificationsPopup").style.display = "none";
-}
-</script>
-
+        <!-- Customer Insights -->
+        <div class="summary">
+            <div class="summary-item" style="background-color: #7D3F8A;">Top Customer: Jane Smith</div>
+            <div class="summary-item" style ="background-color: #D97D00;">Recent Feedback: Excellent Service!</div>
+        </div>
+    </main>
 </body>
 </html>
-
-    
-<?php
-
-?>

@@ -109,8 +109,8 @@
                 </a>
             </div>
         </aside>
-        <div class="main p-3">
-            <div class="text-center">
+        <div class="main text-center ps-3 pe-3">
+            <div>
                 <?php 
                     if (isset($_GET['p'])) {
                         $p = $_GET['p'];
