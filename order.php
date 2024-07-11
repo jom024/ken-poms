@@ -196,10 +196,10 @@ require "code.php";
           <h4 class="text-left float-start p-3">PRINT ORDER MANAGEMENT</h4>
           <!-- Button trigger modal -->
           <div class="btn-group m-3 float-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addOrder">
+            <button type="button" class="btn btn-primary ordercss" data-bs-toggle="modal" data-bs-target="#addOrder">
               <i class="lni lni-plus"></i> ADD</button>
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#">
-              <i class="lni lni-funnel"></i> FILTERS</button>
+            <button type="button" class="btn btn-secondary ordercss" data-bs-toggle="modal" data-bs-target="#">
+              <i class="lni lni-funnel"></i>FILTERS</button>  
 
 
 
@@ -238,11 +238,11 @@ require "code.php";
                     <td> <?php echo $row['order_date']; ?> </td>
                     <td> <?php echo $row['fulfillment_date']; ?> </td>
                     <td>
-                    <button type="button" class="btn btn-info btn-sm text-white view-order" data-bs-toggle="modal" data-bs-target="#viewOrder">
+                    <button type="button" class="btn btn-info btn-sm text-white view-order ordercss" data-bs-toggle="modal" data-bs-target="#viewOrder">
                     <i class="lni lni-eye"></i> VIEW</button>
-                    <button type="button" class="btn btn-success btn-sm edit-order" data-bs-toggle="modal" data-bs-target="#editOrder">
+                    <button type="button" class="btn btn-success btn-sm edit-order ordercss" data-bs-toggle="modal" data-bs-target="#editOrder">
                     <i class="lni lni-pencil"></i> EDIT</button>
-                    <button type="button" class="btn btn-danger btn-sm delete_btn">
+                    <button type="button" class="btn btn-danger btn-sm delete_btn ordercss">
                     <i class="lni lni-trash-can"></i> DELETE</button>
                     </td>
                   </tr>

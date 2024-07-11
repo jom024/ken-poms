@@ -183,26 +183,26 @@ a.sidebar-link:hover {
   }
   
   /* Buttons styles */
-  .btn-primary {
+  .btn-primary.ordercss {
     background-color: #A52A2A; /* Primary button with navbar color */
     border-color: #A52A2A; /* Matching border color */
-    padding: 8px 12px; /* Slightly reduced padding for a sleeker look */
+    /* padding: 8px 12px; Slightly reduced padding for a sleeker look */
     border-radius: 5px; /* Rounded corners */
   }
   
-  .btn-primary:hover {
+  .btn-primary.ordercss:hover {
     background-color: #802020; /* Darker on hover */
     border-color: #701818; /* Matching border color on hover */
   }
   
-  .btn-secondary {
+  .btn-secondary.ordercss {
     background-color: #C18F8F; /* Greyish red for secondary button */
     border-color: #C18F8F; /* Matching border color */
-    padding: 8px 12px; /* Consistent padding */
+    /* padding: 8px 12px; Consistent padding */
     border-radius: 5px; /* Rounded corners */
   }
   
-  .btn-secondary:hover {
+  .btn-secondary.ordercss:hover {
     background-color: #A37474; /* Darker greyish red on hover */
     border-color: #925C5C; /* Matching border color on hover */
   }
@@ -258,7 +258,7 @@ a.sidebar-link:hover {
   .btn-info {
     background-color: #A52A2A; /* Info button color */
     border-color: #A52A2A; /* Matching border color */
-    padding: 5px 10px; /* Slightly reduced padding */
+    /* padding: 5px 10px; Slightly reduced padding */
     border-radius: 5px; /* Rounded corners */
   }
   
@@ -270,7 +270,7 @@ a.sidebar-link:hover {
   .btn-success {
     background-color: #28a745; /* Green background for success button */
     border-color: #28a745; /* Matching border color */
-    padding: 5px 10px; /* Consistent padding */
+    /* padding: 5px 10px; Consistent padding */
     border-radius: 5px; /* Rounded corners */
   }
   
@@ -282,7 +282,7 @@ a.sidebar-link:hover {
   .btn-danger {
     background-color: #dc3545; /* Red background for delete button */
     border-color: #dc3545; /* Matching border color */
-    padding: 5px 10px; /* Consistent padding */
+    /* padding: 5px 10px; Consistent padding */
     border-radius: 5px; /* Rounded corners */
   }
   
@@ -291,3 +291,589 @@ a.sidebar-link:hover {
     border-color: #bd2130; /* Matching border color on hover */
   }
   
+/* Dashboard CSS */
+
+
+/* Reset some default styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #A52A2A;
+  padding: 10px;
+  color: white;
+}
+
+/* Sticky header */
+.sticky-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.sticky-navbar h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #A52A2A;
+}
+
+/* Main content */
+main {
+  padding: 20px;
+}
+
+/* Summary Metrics */
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.summary-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+  color: #333;
+  font-size: 18px;
+}
+
+.summary-item:first-child {
+  margin-left: 0;
+}
+
+.summary-item:last-child {
+  margin-right: 0;
+}
+
+/* Order Status */
+.order-status {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-left: 5px solid #A52A2A;
+}
+
+.order-status h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #A52A2A;
+}
+
+.order-status ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-status li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+/* Analytics and Performance */
+.analytics {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-left: 5px solid #7D3F8A;
+}
+
+.analytics h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #7D3F8A;
+}
+
+/* Notifications/Alerts */
+.notifications-popup {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: relative;
+  border-left: 5px solid #D97D00;
+}
+
+.notifications-popup h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #D97D00;
+}
+
+.notifications-popup ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notifications-popup li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+.notifications-popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #A52A2A;
+  cursor: pointer;
+}
+
+/* Upcoming Tasks/Reminders */
+.update {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-left: 5px solid #4CAF50;
+}
+
+.update h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #4CAF50;
+}
+
+.update ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.update li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+/* Actions and Shortcuts */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.actions .btn {
+  background-color: #A52A2A;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.actions .btn:first-child {
+  margin-left: 0;
+}
+
+.actions .btn:last-child {
+  margin-right: 0;
+}
+
+.actions .btn:hover {
+  background-color: #8b2323;
+}
+
+/* Customer Insights */
+.summary-item:nth-child(odd) {
+  background-color: #7D3F8A;
+  color: white;
+}
+
+.summary-item:nth-child(even) {
+  background-color: #D97D00;
+  color: white;
+}
+
+.profile-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 2em;
+  width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.profile-header {
+  margin-bottom: 1em;
+}
+
+.profile-header img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid #4CAF50;
+}
+
+.profile-header h2 {
+  margin: 0.5em 0 0.2em;
+  color: #333;
+}
+
+.profile-header p {
+  margin: 0;
+  color: #777;
+  font-size: 1em;
+}
+
+.profile-details,
+.account-details,
+.account-settings {
+  margin: 1em 0;
+  text-align: left;
+}
+
+.profile-details h3,
+.account-details h3,
+.account-settings h3 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  color: #eb991f;
+}
+
+.profile-details p,
+.account-details p {
+  margin: 0.5em 0;
+  color: #666;
+}
+
+.account-settings button {
+  width: 40%;
+  padding: 0.84em;
+  margin: 0.5em 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  align-items: center;
+}
+
+.btn-container .btn {
+  /* width: 200px;  */
+  margin: 0 auto;
+}
+
+.btn-primary {
+  background-color: #eb991f;
+  color: white;
+  
+}
+
+.btn-primary:hover {
+  background-color: #F5B14D;
+}
+
+.btn-secondary {
+  background-color: #eb991f;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #F5B14D;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #e53935;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Profile CSS */
+
+/* body {
+  margin: 0;
+  background: linear-gradient(to right, #f7f8f8, #acbb78);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+} */
+
+/* header {
+  background-color: rgba(76, 175, 80, 0.9);
+  color: white;
+  padding: 1em 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+} */
+
+.profile-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 2em;
+  width: 70%;
+  margin: 2em auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile-header {
+  margin-bottom: 1em;
+}
+
+.profile-header img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid #A52A2A;
+}
+
+.profile-header h2 {
+  margin: 0.5em 0 0.2em;
+  color: #333;
+  font-size: 1.5em;
+}
+
+.profile-header p {
+  margin: 0;
+  color: #777;
+  font-size: 1em;
+}
+
+.profile-details,
+.account-details,
+.account-settings {
+  margin: 1.5em 0;
+  text-align: left;
+}
+
+.profile-details h3,
+.account-details h3,
+.account-settings h3 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  color: #A52A2A;
+  font-size: 1.2em;
+}
+
+.profile-details p,
+.account-details p {
+  margin: 0.5em 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-primary,
+.btn-danger {
+  /* width: 48%; */
+  /* padding: 0.8em; */
+  margin: 0.5em 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #4CAF50;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #f44336;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons styles */
+.btn {
+  padding: 5px 10px; /* Uniform padding for all buttons */
+}
+
+/* Primary button styles */
+.btn-primary.ordercss {
+  background-color: #A52A2A; /* Primary button with navbar color */
+  border-color: #A52A2A; /* Matching border color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.btn-primary.ordercss:hover {
+  background-color: #802020; /* Darker on hover */
+  border-color: #701818; /* Matching border color on hover */
+}
+
+.btn-primary {
+  background-color: #eb991f;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #F5B14D;
+}
+
+/* Secondary button styles */
+.btn-secondary.ordercss {
+  background-color: #C18F8F; /* Greyish red for secondary button */
+  border-color: #C18F8F; /* Matching border color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.btn-secondary.ordercss:hover {
+  background-color: #A37474; /* Darker greyish red on hover */
+  border-color: #925C5C; /* Matching border color on hover */
+}
+
+.btn-secondary {
+  background-color: #eb991f;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #F5B14D;
+}
+
+/* Info button styles */
+.btn-info {
+  background-color: #A52A2A; /* Info button color */
+  border-color: #A52A2A; /* Matching border color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.btn-info:hover {
+  background-color: #802020; /* Darker on hover */
+  border-color: #701818; /* Matching border color on hover */
+}
+
+/* Success button styles */
+.btn-success {
+  background-color: #28a745; /* Green background for success button */
+  border-color: #28a745; /* Matching border color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.btn-success:hover {
+  background-color: #1e7e34; /* Darker green on hover */
+  border-color: #1c7430; /* Matching border color on hover */
+}
+
+/* Danger button styles */
+.btn-danger {
+  background-color: #dc3545; /* Red background for delete button */
+  border-color: #dc3545; /* Matching border color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker red on hover */
+  border-color: #bd2130; /* Matching border color on hover */
+}
+
+/* Actions and Shortcuts */
+.actions .btn {
+  background-color: #A52A2A;
+  color: white;
+  padding: 5px 10px; /* Uniform padding for action buttons */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.actions .btn:first-child {
+  margin-left: 0;
+}
+
+.actions .btn:last-child {
+  margin-right: 0;
+}
+
+.actions .btn:hover {
+  background-color: #8b2323;
+}
+
+/* Profile buttons */
+.btn-primary {
+  color: #fff;
+  background-color: #4CAF50;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #f44336;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+}
+
+/* Order Status buttons */
+.order-status .btn,
+.analytics .btn,
+.notifications-popup .btn,
+.update .btn {
+  padding: 5px 10px; /* Uniform padding for buttons in these sections */
+}

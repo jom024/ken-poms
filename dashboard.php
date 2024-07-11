@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <!-- Existing Navbar -->
-
     <!-- Dashboard Navbar -->
     <div class="sticky-navbar">
-        <h1 class="text-start" style="color: black;">Dashboard</h1>
+        <h1 class="text-start">Dashboard</h1>
+    </div>
+    <div>
+        <h1 class="text-start" style="visibility:hidden;">Dashboard</h1>
+        <h1 class="text-start" style="visibility:hidden;">Dashboard</h1>
     </div>
 
     <main>
@@ -81,8 +83,8 @@
 
         <!-- Customer Insights -->
         <div class="summary">
-            <div class="summary-item" style="background-color: #7D3F8A;">Top Customer: Jane Smith</div>
-            <div class="summary-item" style ="background-color: #D97D00;">Recent Feedback: Excellent Service!</div>
+            <div class="summary-item">Top Customer: Jane Smith</div>
+            <div class="summary-item">Recent Feedback: Excellent Service!</div>
         </div>
     </main>
 </body>

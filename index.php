@@ -109,7 +109,7 @@
                 </a>
             </div>
         </aside>
-        <div class="main text-center ps-3 pe-3">
+        <div class="main text-center ps-2 pe-2">
             <div>
                 <?php 
                     if (isset($_GET['p'])) {
@@ -123,7 +123,7 @@
 
                     } 
                     else if($p == 'profile'){
-                        ?> <?php include 'profile.html'; ?> <?php
+                        ?> <?php include 'profile.php'; ?> <?php
                     }
                     else if($p == 'orders'){
                         ?> <?php include 'order.php'; ?> <?php
