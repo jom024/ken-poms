@@ -38,14 +38,9 @@ function saveProfile() {
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
         if (xhr.status == 200) {
-            console.log(xhr.responseText); 
-        }else {
-            console.error('Error updating profile: ' + xhr.status);
+            console.log(xhr.responseText); // Log server response
+            // Optionally update UI to indicate success or handle errors
         }
     };
-    var params = 'newUsername=' + encodeURIComponent(usernInput) + 
-    '&newemail=' + encodeURIComponent(emailInput) + 
-    '&newphone=' + encodeURIComponent(phoneInput);
-
-    xhr.send(params);
+    xhr.send('userId=' + userId + '&newUsername=' + encodeURIComponent(usernInput));
 }
