@@ -1,0 +1,347 @@
+<?php
+// session_start();
+require "code.php";
+?>
+
+<div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+            <h2 class="fs-2 m-0">Orders</h2>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link second-text fw-bold" onclick="toggleNotifications()">
+                        <i class="fas fa-bell my-1 me-2"></i>
+                        <span id="notification-count">0</span>
+                    </a>
+                    <ul id="notification-list"></ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user me-2"></i>John Doe
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="?page=profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="?page=settings">Settings</a></li>
+                        <li><a class="dropdown-item" href="login.php">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Insert Modal -->
+    <div class="modal fade" id="addOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addOrderLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addOrderLabel">Add Order Details</h1>
+                </div>
+                <form action="code.php" method="POST">
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <label for="client-id" class="col-form-label">Client ID</label>
+                                <input type="number" id="client-id" class="form-control" min="1" name="client_id">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="modeofreceiving_id" class="col-form-label">MOR ID</label>
+                                <input type="number" id="modeofreceiving_id" class="form-control" min="1" name="modeofreceiving_id">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="order-status" class="col-form-label">Order Status</label>
+                                <select name="order_status" id="order-status" class="form-control">
+                                    <option value="" selected disabled hidden>Choose here</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Ongoing">Ongoing</option>
+                                    <option value="On Delivery">On Delivery</option>
+                                    <option value="Ready For Pick-up">Ready For Pick-up</option>
+                                    <option value="Complete">Complete</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="payment-status" class="col-form-label">Payment Status</label>
+                                <select name="payment_status" id="payment-status" class="form-control">
+                                    <option value="" selected disabled hidden>Choose here</option>
+                                    <option value="Downpayment">Downpayment</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Unpaid">Unpaid</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="price" class="col-form-label">Total Price</label>
+                                <input type="number" min="1" class="form-control" id="price" step="any" value="1.00" name="total_price">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="order-date" class="col-form-label">Date Ordered</label>
+                                <input type="date" name="order_date" id="order-date" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="fulfillment-date" class="col-form-label">Fulfillment Date</label>
+                                <input type="date" name="fulfillment_date" id="fulfillment-date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="save" class="btn btn-primary" onclick="addOrder()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Modal -->
+    <div class="modal fade" id="viewOrderModal" tabindex="-1" aria-labelledby="viewOrderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="viewOrderModalLabel">View Order Details</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="view-order-data"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editOrderLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editOrderLabel">Update Order Details</h1>
+                </div>
+                <form action="code.php" method="POST">
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <input type="hidden" id="order_id" name="order_id">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <label for="client_id" class="col-form-label">Client ID</label>
+                            </div>
+                            <div class="col-md-4">
+                                <?php
+                                $connection = mysqli_connect("localhost", "root", "", "ken_poms");
+                                $client_query = "SELECT client_id, contact_name FROM `client`";
+                                $client_query_run = mysqli_query($connection, $client_query);
+
+                                $client_options = '';
+                                if (mysqli_num_rows($client_query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($client_query_run)) {
+                                        $client_options .= '<option value="' . $row['client_id'] . '">' . $row['client_id'] . ' - ' . $row['contact_name'] . '</option>';
+                                    }
+                                } ?>
+                                <select type="number" id="client_id" class="form-control" name="client_id">
+                                    <?php echo $client_options; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <?php
+                                $connection = mysqli_connect("localhost", "root", "", "ken_poms");
+                                $client_query = "SELECT modeofreceiving_id, `type` FROM `mode_of_receiving`";
+                                $client_query_run = mysqli_query($connection, $client_query);
+
+                                $mor_options = '';
+                                if (mysqli_num_rows($client_query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($client_query_run)) {
+                                        $mor_options .= '<option value="' . $row['modeofreceiving_id'] . '">' . $row['modeofreceiving_id'] . ' - ' . $row['type'] . '</option>';
+                                    }
+                                } ?>
+                                <label for="modeofreceiving_id" class="col-form-label">MOR ID</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select type="number" id="modeofreceiving_id" class="form-control" name="modeofreceiving_id">
+                                    <?php echo $mor_options; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <label for="order_status" class="col-form-label">Order Status</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select type="text" id="order_status" class="form-control" name="order_status">
+                                    <option value="Pending">Pending</option>
+                                    <option value="Ongoing">Ongoing</option>
+                                    <option value="On Delivery">On Delivery</option>
+                                    <option value="Ready For Pick-up">Ready For Pick-up</option>
+                                    <option value="Complete">Complete</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="payment_status" class="col-form-label">Payment Status</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select type="text" id="payment_status" class="form-control" name="payment_status">
+                                    <option value="Downpayment">Downpayment</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Unpaid">Unpaid</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <label for="price" class="col-form-label">Total Price</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="price" step="any" value="1.00" name="total_price">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="order_date" class="col-form-label">Date Ordered</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="date" name="order_date" id="order_date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <label for="fulfillment_date" class="col-form-label">Fulfillment Date</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="date" name="fulfillment_date" id="fulfillment_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="update" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Table -->
+    <div class="container-fluid px-4">
+        <div class="row g-3 my-2">
+            <div class="row my-5">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addOrder">
+                        Add Order
+                    </button>
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Client ID</th>
+                                        <th>MOR ID</th>
+                                        <th>Order Status</th>
+                                        <th>Payment Status</th>
+                                        <th>Total Price</th>
+                                        <th>Date Ordered</th>
+                                        <th>Fulfillment Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $connection = mysqli_connect("localhost", "root", "", "ken_poms");
+                                    $query = "SELECT * FROM `order`";
+                                    $query_run = mysqli_query($connection, $query);
+
+                                    if (mysqli_num_rows($query_run) > 0) {
+                                        while ($row = mysqli_fetch_assoc($query_run)) {
+                                    ?>
+                                            <tr>
+                                                <td><?php echo $row['order_id']; ?></td>
+                                                <td><?php echo $row['client_id']; ?></td>
+                                                <td><?php echo $row['modeofreceiving_id']; ?></td>
+                                                <td><?php echo $row['order_status']; ?></td>
+                                                <td><?php echo $row['payment_status']; ?></td>
+                                                <td><?php echo $row['total_price']; ?></td>
+                                                <td><?php echo $row['order_date']; ?></td>
+                                                <td><?php echo $row['fulfillment_date']; ?></td>
+                                                <td>
+                                                    <button type="button" value="<?php echo $row['order_id']; ?>" class="btn btn-primary btn-sm viewOrderbtn">View</button>
+                                                    <button type="button" value="<?php echo $row['order_id']; ?>" class="btn btn-primary btn-sm editOrderbtn">Edit</button>
+                                                </td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "No Record Found";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function addNotification(message) {
+            const notificationList = document.getElementById("notification-list");
+            const notificationCount = document.getElementById("notification-count");
+
+            // Create a new list item
+            const newNotification = document.createElement("li");
+            newNotification.innerText = message;
+
+            // Add the new notification to the list
+            notificationList.appendChild(newNotification);
+
+            // Update the notification count
+            const currentCount = parseInt(notificationCount.innerText);
+            notificationCount.innerText = currentCount + 1;
+        }
+
+        function toggleNotifications() {
+            const notificationList = document.getElementById("notification-list");
+            if (notificationList.style.display === "none" || notificationList.style.display === "") {
+                notificationList.style.display = "block";
+            } else {
+                notificationList.style.display = "none";
+            }
+        }
+
+        // Event listener for view and edit buttons
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".viewOrderbtn").forEach(button => {
+                button.addEventListener("click", function () {
+                    // Handle viewing order
+                    const orderId = this.value;
+                    // Fetch order details and display in modal (implement fetch and display logic)
+                    // For now, just logging the order ID
+                    console.log("View Order ID:", orderId);
+                });
+            });
+
+            document.querySelectorAll(".editOrderbtn").forEach(button => {
+                button.addEventListener("click", function () {
+                    // Handle editing order
+                    const orderId = this.value;
+                    // Fetch order details and display in edit modal (implement fetch and display logic)
+                    // For now, just logging the order ID
+                    console.log("Edit Order ID:", orderId);
+                });
+            });
+        });
+    </script>
+</div>
